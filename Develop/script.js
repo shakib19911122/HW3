@@ -9,16 +9,17 @@ var form = document.getElementById('passwordGeneratorForm')
 
 
 // setting up variable for the upper case, lower case, numbers and special characters. 
-var arrayUpperCase = arrayFromLowToHigh(65, 90)
-var arrayLowercase = arrayFromLowToHigh(97, 122)
-var arrayNumber = arrayFromLowToHigh(48, 57)
+var arrayUpperCase = arrayFromLowToHigh(65, 90);
+console.log(arrayUpperCase)
+var arrayLowercase = arrayFromLowToHigh(97, 122);
+var arrayNumber = arrayFromLowToHigh(48, 57);
 var arraySymble = arrayFromLowToHigh(33, 47).concat(
   arrayFromLowToHigh(58, 64)
 ).concat(
   arrayFromLowToHigh(91, 96)
 ).concat(
   arrayFromLowToHigh(123, 126)
-)
+);
 
 
 characterAmountNumber.addEventListener('input', syncCharacterAmount); 
@@ -26,14 +27,16 @@ characterAmountRange.addEventListener('input', syncCharacterAmount);
 
 
 // Add event listener to generate button
-form.addEventListener("submit", e => {
+form.addEventListener("submit", function(e) {
   e.preventDefault()
   var characterAmount = characterAmountNumber.value;
   var includeUpperCase = includeUppercaseElement.checked;
   var includeNumbers = includeNumbersElement.checked;
   var includeSymbols = includeSymbolsElement.checked;
-  var password = generatePassword (characterAmount, includeUpperCase, includeNumbers, includeSymbols);
-  password.innerText  = password
+  var genpwd = generatePassword (characterAmount, includeUpperCase, includeNumbers, includeSymbols);
+  console.log(genpwd);
+  password.innerHTML = genpwd;
+  
 
 })
 
